@@ -17,7 +17,7 @@ const respostas = {
   "2": "Nosso horário de funcionamento é das 8h às 18h, de segunda a sábado.",
   "3": "Nosso endereço é Rua Exemplo, 123, Centro, Cidade/Estado.",
   "saudacao": "Olá! Como posso te ajudar hoje? Você pode escolher uma das opções: 1, 2 ou 3.",
-  "erro": "Desculpe, não entendi. Escolha uma opção: 1, 2 ou 3, ou pergunte sobre algo mais!",
+  "erro": "Escolha uma das opções: 1, 2 ou 3.",
   "opcoes": "Escolha uma opção: 1 - Fazer um pedido, 2 - Horário de funcionamento, 3 - Endereço da empresa.",
   "quais_sao_as_opcoes": "Você pode me perguntar sobre: 1 - Pedidos, 2 - Horário de funcionamento, 3 - Endereço. Ou digitar uma pergunta que eu possa responder.",
   "o_que_voce_faz": "Eu sou um assistente virtual! Eu posso te ajudar com pedidos, horário de funcionamento ou localização da nossa empresa.",
