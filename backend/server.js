@@ -14,7 +14,11 @@ const respostas = {
   "2": "Nosso horário de funcionamento é das 8h às 18h, de segunda a sábado.",
   "3": "Nosso endereço é Rua Exemplo, 123, Centro, Cidade/Estado.",
   "saudacao": "Olá! Como posso te ajudar hoje? Você pode escolher uma das opções: 1, 2 ou 3.",
-  "erro": "Desculpe, não entendi. Escolha uma opção: 1, 2 ou 3, ou pergunte sobre algo mais!"
+  "erro": "Desculpe, não entendi. Escolha uma opção: 1, 2 ou 3, ou pergunte sobre algo mais!",
+  "opcoes": "Escolha uma opção: 1 - Fazer um pedido, 2 - Horário de funcionamento, 3 - Endereço da empresa.",
+  "quais_sao_as_opcoes": "Você pode me perguntar sobre: 1 - Pedidos, 2 - Horário de funcionamento, 3 - Endereço. Ou digitar uma pergunta que eu possa responder.",
+  "o_que_voce_faz": "Eu sou um assistente virtual! Eu posso te ajudar com pedidos, horário de funcionamento ou localização da nossa empresa.",
+  "como_posso_ajudar": "Você pode perguntar sobre nossos serviços, horários, ou nosso endereço."
 };
 
 // Função para salvar o log da interação no banco de dados (MongoDB)
@@ -29,10 +33,23 @@ function logMessageToDB(message, response) {
 // Rota principal do chatbot
 app.post("/api/chat", (req, res) => {
   const { message } = req.body;
-  let resposta = respostas[message] || respostas["erro"]; // Resposta padrão para mensagens desconhecidas
-  
-  if (!resposta && message.toLowerCase().includes("oi")) {
-    resposta = respostas["saudacao"];
+
+  // Lógica para determinar a resposta com base na entrada do usuário
+  let resposta;
+
+  if (message.toLowerCase().includes("opções") || message.toLowerCase().includes("o que posso perguntar")) {
+    resposta = respostas["quais_sao_as_opcoes"];
+  } else if (message.toLowerCase().includes("o que você faz")) {
+    resposta = respostas["o_que_voce_faz"];
+  } else if (message.toLowerCase().includes("como posso ajudar")) {
+    resposta = respostas["como_posso_ajudar"];
+  } else if (message.toLowerCase().includes("boa noite")) {
+    resposta = respostas["boa_noite"];
+  } else if (message.toLowerCase().includes("bom dia")) {
+    resposta = respostas["bom_dia"];
+  } else {
+    // Verifica se a mensagem corresponde a uma opção específica (1, 2 ou 3)
+    resposta = respostas[message] || respostas["erro"];
   }
 
   // Log da interação no servidor (simulando salvar no banco de dados)
