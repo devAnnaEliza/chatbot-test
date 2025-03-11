@@ -27,7 +27,7 @@ function displayMessage(message, sender) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message: userInput }),
+      body: JSON.stringify({ message: userInput, usuario: "Nome do Usuário" }), // Adicione o nome do usuário aqui
     })
       .then(response => response.json())
       .then(data => {
