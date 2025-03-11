@@ -1,13 +1,12 @@
 // Importação das dependências
 const express = require("express");
 const cors = require("cors");
-const fs = require("fs");
 require("dotenv").config();
 
 // Inicialização do servidor
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors()); // Permite requisições de origens diferentes (como localhost:3000 para o front-end)
 
 // Configuração das respostas do chatbot
 const respostas = {
@@ -18,34 +17,28 @@ const respostas = {
   "erro": "Desculpe, não entendi. Escolha uma opção: 1, 2 ou 3, ou pergunte sobre algo mais!"
 };
 
-// Função para logar as mensagens em um arquivo
-function logMessage(message, response) {
-  const log = `Mensagem: ${message} | Resposta: ${response} | Data: ${new Date().toISOString()}\n`;
-  fs.appendFile("chat_logs.txt", log, (err) => {
-    if (err) {
-      console.error("Erro ao salvar log: ", err);
-    } else {
-      console.log("Log salvo com sucesso.");
-    }
-  });
+// Função para salvar o log da interação no banco de dados (MongoDB)
+function logMessageToDB(message, response) {
+  // Aqui você poderia adicionar o código para salvar no banco de dados MongoDB
+  // Exemplo:
+  // const newLog = new ChatLog({ message, response });
+  // newLog.save().catch((err) => console.error(err));
+  console.log(`Log: ${message} => ${response}`);
 }
 
 // Rota principal do chatbot
 app.post("/api/chat", (req, res) => {
   const { message } = req.body;
-
-  // Respostas personalizadas baseadas na mensagem
-  let resposta = respostas[message] || respostas["erro"];
-
-  // Se a mensagem não for uma opção numérica, tentamos encontrar respostas alternativas
+  let resposta = respostas[message] || respostas["erro"]; // Resposta padrão para mensagens desconhecidas
+  
   if (!resposta && message.toLowerCase().includes("oi")) {
     resposta = respostas["saudacao"];
   }
 
-  // Log da interação
-  logMessage(message, resposta);
+  // Log da interação no servidor (simulando salvar no banco de dados)
+  logMessageToDB(message, resposta);
 
-  // Retorno da resposta
+  // Envia a resposta do chatbot para o front-end
   res.json({ reply: resposta });
 });
 
