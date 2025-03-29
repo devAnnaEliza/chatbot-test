@@ -7,16 +7,26 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="chat-container">
-    <div class="chat-box" id="chat-box">
-      <!-- Mensagens aparecerão aqui -->
-    </div>
-    <div class="input-container">
-      <input type="text" id="user-input" placeholder="Digite sua mensagem..." />
-      <button onclick="sendMessage()">Enviar</button>
-    </div>
-  </div>
-
+  <header>
+    <h1>Chatbot Inteligente</h1>
+  </header>
+  <main class="chat-container">
+    <section class="chat-box" id="chat-box">
+      <!-- As mensagens do chatbot e do usuário aparecerão aqui -->
+    </section>
+    <section class="input-container">
+      <input 
+        type="text" 
+        id="user-input" 
+        placeholder="Digite sua mensagem..." 
+        aria-label="Campo de entrada para mensagem"
+      />
+      <button id="send-button" aria-label="Enviar mensagem">Enviar</button>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Chatbot. Todos os direitos reservados.</p>
+  </footer>
   <script src="script.js"></script>
 </body>
 </html>
