@@ -14,6 +14,8 @@ const respostas = {
   "erro": "Desculpe, não entendi. Escolha uma das opções: 1, 2 ou 3.",
 };
 
+const mensagensCoringa = ["olá", "oi", "bom dia", "boa tarde", "boa noite", "e aí", "tudo bem"];
+
 app.post("/api/chat", (req, res) => {
   const { message, usuario } = req.body;
 
@@ -22,14 +24,14 @@ app.post("/api/chat", (req, res) => {
   }
 
   const mensagemFormatada = message.trim().toLowerCase();
+  console.log("Mensagem formatada:", mensagemFormatada);
+
+  if (mensagensCoringa.includes(mensagemFormatada)) {
+    return res.json({ reply: respostas["saudacao"] });
+  }
+
   const resposta = respostas[mensagemFormatada] || respostas["erro"];
-
   res.json({ reply: resposta });
-});
-
-app.use((err, req, res, next) => {
-  console.error("Erro no servidor:", err);
-  res.status(500).json({ reply: "Ocorreu um erro no servidor. Tente novamente mais tarde." });
 });
 
 const PORT = process.env.PORT || 5000;

@@ -24,7 +24,7 @@ async function sendMessage() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message: userInput, usuario: "Nome do Usuário" }), // Adicione o nome do usuário aqui
+      body: JSON.stringify({ message: userInput, usuario: "Usuário" }),
     });
 
     if (!response.ok) {
@@ -32,9 +32,10 @@ async function sendMessage() {
     }
 
     const data = await response.json();
-    const botReply = data.reply;
+    console.log("Mensagem enviada:", userInput);
+    console.log("Resposta recebida:", data.reply);
 
-    displayMessage(botReply, "bot");
+    displayMessage(data.reply, "bot");
   } catch (error) {
     console.error("Erro ao enviar a mensagem:", error);
     displayMessage("Desculpe, algo deu errado. Tente novamente mais tarde.", "bot");
