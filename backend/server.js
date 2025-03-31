@@ -1,38 +1,36 @@
+// Importação das dependências
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+// Inicialização do servidor
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Respostas do chatbot
 const respostas = {
-  "1": "Ótimo! Para fazer um pedido, acesse nosso site ou ligue para (XX) XXXX-XXXX.",
-  "2": "Nosso horário de funcionamento é das 8h às 18h, de segunda a sábado.",
-  "3": "Nosso endereço é Rua Exemplo, 123, Centro, Cidade/Estado.",
-  "saudacao": "Olá! Como posso te ajudar hoje? Escolha uma das opções: 1, 2 ou 3.",
-  "erro": "Desculpe, não entendi. Escolha uma das opções: 1, 2 ou 3.",
+  "olá": "Olá! Como posso te ajudar hoje?",
+  "tudo bem?": "Estou bem, obrigado! E você?",
+  "qual é o seu nome?": "Eu sou o Chatbot Inteligente!",
+  "adeus": "Até logo! Foi um prazer conversar com você.",
+  "erro": "Desculpe, não entendi. Pode reformular?",
 };
 
-const mensagensCoringa = ["olá", "oi", "bom dia", "boa tarde", "boa noite", "e aí", "tudo bem"];
-
+// Rota principal do chatbot
 app.post("/api/chat", (req, res) => {
-  const { message, usuario } = req.body;
+  const { message } = req.body;
 
-  if (!message || typeof message !== "string" || !usuario || typeof usuario !== "string") {
-    return res.status(400).json({ reply: "Entrada inválida. Certifique-se de enviar uma mensagem e um nome de usuário válidos." });
+  if (!message || typeof message !== "string") {
+    return res.status(400).json({ reply: "Entrada inválida. Envie uma mensagem válida." });
   }
 
   const mensagemFormatada = message.trim().toLowerCase();
-  console.log("Mensagem formatada:", mensagemFormatada);
-
-  if (mensagensCoringa.includes(mensagemFormatada)) {
-    return res.json({ reply: respostas["saudacao"] });
-  }
-
   const resposta = respostas[mensagemFormatada] || respostas["erro"];
+
   res.json({ reply: resposta });
 });
 
+// Inicialização do servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));

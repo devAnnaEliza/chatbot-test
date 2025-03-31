@@ -3,38 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Chatbot</title>
-  
+  <title>Chatbot Inteligente</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
-
-  <header>
+  <header class="chatbot-header">
     <h1>Chatbot Inteligente</h1>
   </header>
 
-  <main class="chat-container">
-    <section class="chat-box" id="chat-box"></section>
+  <main class="chatbot-container">
+    <!-- Área de mensagens -->
+    <section class="chatbot-messages" id="chat-messages">
+      <!-- As mensagens do usuário e do bot aparecerão aqui -->
+    </section>
 
-    <section class="input-container">
+    <!-- Caixa de entrada -->
+    <section class="chatbot-input-container">
       <input 
         type="text" 
         id="user-input" 
+        class="chatbot-input" 
         placeholder="Digite sua mensagem..." 
         aria-label="Campo de entrada para mensagem"
       />
-      <button id="send-button" aria-label="Enviar mensagem">Enviar</button>
+      <button id="send-button" class="chatbot-send-btn" aria-label="Enviar mensagem">Enviar</button>
     </section>
-
   </main>
 
-  <footer>
-  </footer>
-
   <script src="script.js"></script>
-
 </body>
 </html>
