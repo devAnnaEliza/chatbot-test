@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chatbot Inteligente</title>
+  <title>Agenda de Lembretes</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="chatbot-header">
-    <h1>Chatbot Inteligente</h1>
+    <h1>Agenda de Lembretes</h1>
   </header>
 
   <main class="chatbot-container">
-    <!-- Área de mensagens -->
-    <section class="chatbot-messages" id="chat-messages">
-      <!-- As mensagens do usuário e do bot aparecerão aqui -->
+    <!-- Área de lembretes -->
+    <section class="chatbot-messages" id="chat-messages" aria-live="polite">
+      <!-- Os lembretes adicionados aparecerão aqui -->
     </section>
 
     <!-- Caixa de entrada -->
@@ -23,10 +23,10 @@
         type="text" 
         id="user-input" 
         class="chatbot-input" 
-        placeholder="Digite sua mensagem..." 
-        aria-label="Campo de entrada para mensagem"
+        placeholder="Digite um lembrete ou comando..." 
+        aria-label="Campo de entrada para lembrete ou comando"
       />
-      <button id="send-button" class="chatbot-send-btn" aria-label="Enviar mensagem">Enviar</button>
+      <button id="send-button" class="chatbot-send-btn" aria-label="Adicionar lembrete">Adicionar</button>
     </section>
   </main>
 
