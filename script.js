@@ -19,17 +19,6 @@ async function sendMessage() {
   userInputElement.value = "";
 
   try {
-    const botReply = await getBotResponse(userInput);
-
-    displayMessage(botReply, "bot-message");
-  } catch (error) {
-    console.error("Erro ao enviar a mensagem:", error);
-    displayMessage("Desculpe, algo deu errado. Tente novamente mais tarde.", "bot-message");
-  }
-}
-
-async function getBotResponse(userInput) {
-  try {
     const response = await fetch("http://localhost:5000/api/chat", {
       method: "POST",
       headers: {
@@ -43,10 +32,10 @@ async function getBotResponse(userInput) {
     }
 
     const data = await response.json();
-    return data.reply;
+    displayMessage(data.reply, "bot-message");
   } catch (error) {
-    console.error("Erro ao se comunicar com o backend:", error);
-    return "Desculpe, algo deu errado. Tente novamente mais tarde.";
+    console.error("Erro ao enviar a mensagem:", error);
+    displayMessage("Desculpe, algo deu errado. Tente novamente mais tarde.", "bot-message");
   }
 }
 
