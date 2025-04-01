@@ -54,6 +54,12 @@ body {
   animation: fadeIn 0.4s forwards;
 }
 
+.message i {
+  margin-right: 8px;
+  color: #666;
+  vertical-align: middle;
+}
+
 .user-message {
   align-self: flex-end;
   background: linear-gradient(to right, #6a11cb, #2575fc);
@@ -102,6 +108,12 @@ body {
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
   font-size: 15px;
+}
+
+.chatbot-send-btn i {
+  font-size: 16px;
+  margin-left: 5px;
+  vertical-align: middle;
 }
 
 .chatbot-send-btn:hover {

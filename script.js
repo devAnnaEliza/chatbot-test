@@ -2,7 +2,13 @@ function displayMessage(message, sender) {
   const chatBox = document.getElementById("chat-messages");
   const newMessage = document.createElement("div");
   newMessage.classList.add("message", sender); // 'user-message' ou 'bot-message'
-  newMessage.textContent = message;
+
+  if (sender === "user-message") {
+    newMessage.innerHTML = `<i class="fas fa-user"></i> ${message}`;
+  } else if (sender === "bot-message") {
+    newMessage.innerHTML = `<i class="fas fa-robot"></i> ${message}`;
+  }
+
   chatBox.appendChild(newMessage);
 
   chatBox.scrollTop = chatBox.scrollHeight;
