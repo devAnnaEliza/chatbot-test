@@ -1,8 +1,9 @@
 function displayMessage(message, sender) {
   const chatBox = document.getElementById("chat-messages");
   const newMessage = document.createElement("div");
-  newMessage.classList.add("message", sender); // 'user-message' ou 'bot-message'
+  newMessage.classList.add("message", sender);
 
+  // Adiciona ícones às mensagens
   if (sender === "user-message") {
     newMessage.innerHTML = `<i class="fas fa-user"></i> ${message}`;
   } else if (sender === "bot-message") {
@@ -10,7 +11,6 @@ function displayMessage(message, sender) {
   }
 
   chatBox.appendChild(newMessage);
-
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
@@ -21,7 +21,6 @@ async function sendMessage() {
   if (userInput === "") return;
 
   displayMessage(userInput, "user-message");
-
   userInputElement.value = "";
 
   try {
