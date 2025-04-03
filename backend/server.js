@@ -33,7 +33,8 @@ app.post("/api/chat", (req, res) => {
     }
 
     lembretes.push({ horario, mensagem: lembrete });
-    return res.json({ reply: `Lembrete adicionado para ${horario}: "${lembrete}"` });
+    return res.json({ reply: `Lembrete adicionado:\nTítulo: ${titulo}\nHorário: ${horario}\nDia: ${diaSemana}\nMensagem: ${mensagem}`,
+    });
   }
 
   // Listar lembretes

@@ -7,7 +7,9 @@ function displayMessage(message, sender) {
   if (sender === "user-message") {
     newMessage.innerHTML = `<i class="fas fa-user"></i> ${message}`;
   } else if (sender === "bot-message") {
-    newMessage.innerHTML = `<i class="fas fa-robot"></i> ${message}`;
+    // Substitui quebras de linha (\n) por <br> para exibição correta
+    const formattedMessage = message.replace(/\n/g, "<br>");
+    newMessage.innerHTML = `<i class="fas fa-robot"></i> ${formattedMessage}`;
   }
 
   chatBox.appendChild(newMessage);
