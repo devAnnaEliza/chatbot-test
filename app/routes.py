@@ -23,4 +23,4 @@ def chat():
 
     #respostas padrão
     reply = responses.get(message, "Desculpe, não entendi. Pode reformular?")
-    return jsonfy({"reply": reply})
+    return jsonify({"reply": reply})
