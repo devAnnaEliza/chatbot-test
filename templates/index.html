@@ -3,37 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Agenda de Lembretes</title>
-  
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <title>Intelichat</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
 </head>
+
 <body>
-  <header class="chatbot-header">
-    <h1>Agenda de Lembretes</h1>
-  </header>
+
+  <header class="chatbot-container">
+    <h1>Intelichat</h1>
+  </header>  
 
   <main class="chatbot-container">
-    <!-- Área de lembretes -->
-    <section class="chatbot-messages" id="chat-messages" aria-live="polite">
-      <!-- Os lembretes adicionados aparecerão aqui -->
-    </section>
-
+    <section class="chatbot-messages" id="chat-messages"></section>
     <section class="chatbot-input-container">
-      <input 
-        type="text" 
-        id="user-input" 
-        class="chatbot-input" 
-        placeholder="Digite um lembrete ou comando..." 
-        aria-label="Campo de entrada para lembrete ou comando"
-      />
-      <button id="send-button" class="chatbot-send-btn" aria-label="Adicionar lembrete">
-        <i class="fas fa-paper-plane"></i> <!-- Ícone de envio -->
+      <input type="text" id="user-input" class=" chatbot-input" placeholder="Digite aqui...">
+      <button id="send-button" class="chatbot-send-btn">
+        <ion-icon name="send-outline"></ion-icon>
       </button>
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
