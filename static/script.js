@@ -1,3 +1,6 @@
+from flask_cors import CORS 
+CORS(app)
+
 function displayMessage(message, sender) {
   const chatBox = document.getElementById("chat-messages");
   const newMessage = document.createElement("div");
