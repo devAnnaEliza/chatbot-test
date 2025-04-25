@@ -12,13 +12,13 @@ async function sendMessage() {
   const userInputElement = document.getElementById("user-input");
   const userInput = userInputElement.value.trim();
 
-  if (userInput === "") return;
+  if (userInput === "") return; // Não envia mensagens vazias
 
-  displayMessage(userInput, "user-message");
-
-  userInputElement.value = "";
+  displayMessage(userInput, "user-message"); // Exibe a mensagem do usuário
+  userInputElement.value = ""; // Limpa o campo de entrada
 
   try {
+    // Envia a mensagem para o backend
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
@@ -32,7 +32,7 @@ async function sendMessage() {
     }
 
     const data = await response.json();
-    displayMessage(data.reply, "bot-message");
+    displayMessage(data.reply, "bot-message"); // Exibe a resposta do bot
   } catch (error) {
     console.error("Erro ao enviar a mensagem:", error);
     displayMessage("Desculpe, algo deu errado. Tente novamente mais tarde.", "bot-message");
