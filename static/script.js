@@ -1,29 +1,24 @@
 function displayMessage(message, sender) {
   const chatBox = document.getElementById("chat-messages");
   const newMessage = document.createElement("div");
-  newMessage.classList.add("message", sender); // 'user-message' ou 'bot-message'
+  newMessage.classList.add("message", sender);
   newMessage.textContent = message;
   chatBox.appendChild(newMessage);
 
-  // Rola automaticamente para a última mensagem
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Função para enviar a mensagem do usuário
 async function sendMessage() {
   const userInputElement = document.getElementById("user-input");
   const userInput = userInputElement.value.trim();
 
-  if (userInput === "") return; // Não envia mensagens vazias
+  if (userInput === "") return;
 
-  // Exibe a mensagem do usuário na interface
   displayMessage(userInput, "user-message");
 
-  // Limpa o campo de entrada
   userInputElement.value = "";
 
   try {
-    // Envia a mensagem para o backend
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
@@ -44,7 +39,6 @@ async function sendMessage() {
   }
 }
 
-// Adiciona eventos ao botão de envio e ao pressionar Enter
 document.getElementById("send-button").addEventListener("click", sendMessage);
 document.getElementById("user-input").addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
