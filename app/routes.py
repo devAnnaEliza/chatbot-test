@@ -6,7 +6,7 @@ main = Blueprint("main", __name__)
 def chat():
     data = request.get_json()
     message = data.get("message", "").lower()
-    print(f"Mensagem recebida: {message}")
+    print(f"Mensagem recebida: {message}")  # Log para depuração
 
     responses = {
         "olá": "Olá! Como posso te ajudar hoje?",
@@ -16,4 +16,5 @@ def chat():
     }
 
     reply = responses.get(message, "Desculpe, não entendi. Pode reformular?")
+    print(f"Resposta enviada: {reply}")  # Log para depuração
     return jsonify({"reply": reply})
