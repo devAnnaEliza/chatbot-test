@@ -11,7 +11,7 @@ terminado = False
 print('Chat iniciado!')
 
 while not terminado:
-    msg = cliente.recv(1024).encode('utf-8')
+    msg = cliente.recv(1024).decode('utf-8')
 
     if msg == 'sair':
         terminado = True
