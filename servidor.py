@@ -1,4 +1,4 @@
-import socket #biblioteca 
+import socket
 
 servidor = socket.socket(socket.AF_INET, socket.socket.SOCK_STREAM)
 servidor.bind(('localhost', 8888))
