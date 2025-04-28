@@ -1,2 +1,4 @@
-# chatbot-test
+# Chatbot 
+
+Chatbot inteligente desenvolvido com python 
  
