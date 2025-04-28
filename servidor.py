@@ -1,29 +1,29 @@
 import socket
+import threading
 
+def handle_client(conexao, endereco):
+    print(f"Conexaõ estabelecida com {endereco}")
+    while True:
+        try:
+        msg = cliente.recv(1024).decode('utf-8')
+        if msg == 'sair':
+            print(f"Conexão encerrada com {endereco}")
+            conexao.send('sair'.encode('utf-8'))
+            break
+        else:
+            resposta = f"Você disse: {msg}
+            conexao.send(resposta.encode('utf-8'))
+        except:
+            break
+    conexao.close()
 
 servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 servidor.bind(('localhost', 8888))
 
-servidor.listen(1)
+servidor.listen(5)
 print("Aguardando conexão...")
 
-conexao, endereco = servidor.accept()
-print(f"Conexão estabelecida com {endereco}")
-
-terminado = False
-
-print('Chat iniciado!')
-
-while not terminado:
-    msg = cliente.recv(1024).decode('utf-8')
-    print(f"Mensagem recebida: {msg}")
-
-    if msg == 'sair':
-        terminado = True
-        conexao.send('sair'.encode('utf-8'))
-    else:
-        resposta = f"Você disse: {msg}"
-        cliente.send(resposta.encode('utf-8'))
-
-conexao.close()
-servidor.close()
+while True:
+    conexao, endereco = servidor.accept()
+    thread = threading.Thread(target=handle_client, args=(conexao, endereco))
+    thread.start()
