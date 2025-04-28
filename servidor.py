@@ -3,8 +3,9 @@ import socket
 servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 servidor.bind(('localhost', 8888))
 
-servidor.listen()
-cliente, end = servidor.accept()
+servidor.listen(1)
+
+conexao, endereco = servidor.accept()
 
 terminado = False
 
@@ -18,5 +19,5 @@ while not terminado:
     else:
         cliente.send(input('Mensagem: ').encode('utf-8'))
 
+conexao.close()
 servidor.close()
-cliente.close()
