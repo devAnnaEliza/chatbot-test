@@ -11,5 +11,6 @@ Chatbot desenvolvido em Python, utilizando sockets para comunicação entre clie
 
 ## 🛠️ Tecnologias Utilizadas
 
-- Python: Linguagem principal do projeto.
-- Sockets: Para comunicação entre cliente e servidor.
+- Python
+- Sockets
+- Threading
