@@ -6,16 +6,23 @@ def handle_client(conexao, endereco):
     while True:
         try:
             msg = cliente.recv(1024).decode('utf-8')
-            if msg == 'sair':
+            if not msg:
+                print(f"Cliente {endereco} desconectado")
+                break
+
+            print(f"Mensagem recebida de {endereco}: {msg}")
+            
+            if msg.lower() == 'sair':
                 print(f"Conexão encerrada com {endereco}")
                 conexao.send('sair'.encode('utf-8'))
                 break
             else:
                 resposta = f"Você disse: {msg}"
                 conexao.send(resposta.encode('utf-8'))
-        except:
-            print(f"Erro na conexão com {endereco}")
+        except Exception as e:
+            print(f"Erro na conexão com {endereco}: {e}")
             break
+
     conexao.close()
 
 servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
