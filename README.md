@@ -13,4 +13,4 @@ Chatbot desenvolvido em Python, utilizando sockets para comunicação entre clie
 
 - Python
 - Sockets
-- Threading
+- Threading 
