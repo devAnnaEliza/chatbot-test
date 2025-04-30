@@ -1,6 +1,6 @@
 # Chatbot Inteligente 🤖
 
-Chatbot desenvolvido em Python, utilizando sockets para comunicação entre cliente e servidor. Este projeto foi iniciado como prática de uma aula da plataforma Jornada do Dev e depois foi aprimorado com mais algumas funcionalidades.
+Chatbot desenvolvido em Python, utilizando sockets para comunicação entre cliente e servidor. Este projeto foi iniciado como prática de uma aula da plataforma Jornada do Dev e depois foi aprimorado com mais algumas funcionalidades. 
 
 ## 📋 Funcionalidades
 
@@ -14,3 +14,5 @@ Chatbot desenvolvido em Python, utilizando sockets para comunicação entre clie
 - Python
 - Sockets
 - Threading 
+
+**ainda em desenvolvimento**
